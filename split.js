@@ -12,15 +12,12 @@ var factory = splitio({
   });
   // And get the client instance you'll use
   var client = factory.client();
-//   const sdkReady = new Event("SDK_READY");
-//   const sdkTimeout = new Event("SDK_TIMEOUT");
 
   client.on(client.Event.SDK_READY, function() {
     showPage()
   });
 
   client.on(client.Event.SDK_TIMED_OUT, function() {
-
     // show error or timeout page here
   });
 
