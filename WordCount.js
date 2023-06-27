@@ -1,6 +1,8 @@
 import client from "./split.js";
 
+const newStyle = `color:blue;font-weight: bold;`;
 
+const currentStyle = `color:red`;
 
 client.ready().then(() => {
   // Create a class for the element
@@ -27,7 +29,18 @@ client.ready().then(() => {
 
       // Create text node and add word count to it
       const text = document.createElement("span");
+
       text.textContent = count;
+
+      const new_word_count_style = client.getTreatment("word_count_text");
+      if (new_word_count_style == "on") {
+        text.style = newStyle;
+      } else if (new_word_count_style == "off") {
+        text.style = currentStyle;
+      } else {
+        text.style = currentStyle;
+        // also do some alerting here as this was unexpected
+      }
 
       // Append it to the shadow root
       shadow.appendChild(text);

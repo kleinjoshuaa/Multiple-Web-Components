@@ -3,7 +3,7 @@ import showPage from "./showpage.js";
 // Instantiate the SDK. CDN will expose splitio globally 
 var factory = splitio({ 
     core: {
-      authorizationKey: 'g95osp3c7epibjli3n60cjjtm4gjii8jjlp1',
+      authorizationKey: 'SPLIT_API_KEY',
       // key represents your internal user id, or the account id that 
       // the user belongs to. 
       // This could also be a cookie you generate for anonymous users
