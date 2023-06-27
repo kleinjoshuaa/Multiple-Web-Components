@@ -1,0 +1,42 @@
+.spinner {
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  border-color: #3d5af1 transparent #3d5af1 transparent;
+  border-radius: 50%;
+  animation: spin-anim 1.2s linear infinite;  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+}
+@keyframes spin-anim {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+body {
+  background-color: pink;
+}
+h1 {
+  color: blue;
+  margin-left: 30px;
+}
+
+h2 {
+  color: rgb(174, 0, 255);
+  margin-left: 40px;
+}
+
+p {
+  margin-left: 40px
+}
+
+
+.hide {
+  display: none
+}
