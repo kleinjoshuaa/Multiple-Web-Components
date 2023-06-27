@@ -1,4 +1,4 @@
-# Multiple-Web-Components
+# Using Split with multiple web components
 Using Split SDK in a microfrontend environment
 
 ## What are microfrontends?
