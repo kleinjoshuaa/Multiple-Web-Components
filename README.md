@@ -18,7 +18,7 @@ This shared Split module will be injected into each of the microfrontend JS file
 
 Both modules use the pattern of importing the Split module, setting the variation styles, and then checking for SDK readyiness before proceeding to define the component that will use Split for decisioning. 
 
-In this example we hae 2 modules. In the first, it is a word count widget where the feature flag controls the color of the text in the end of the editable textbox. In the second module, we have a component with a background colored text that is controlled by a feature flag. 
+In this example we hae 2 modules. The first, `WordCount.js`, is a word count widget where the feature flag controls the color of the text in the end of the editable textbox. The second module, `MyParagraph.js` ,is a component with a background colored text that is controlled by a feature flag. 
 
 ## Final Result
 In the below animation you can see the various variations that are possibole. They are randomized independantly. 
