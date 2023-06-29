@@ -21,7 +21,7 @@ Both modules use the pattern of importing the Split module, setting the variatio
 In this example we have 2 modules. The first, `WordCount.js`, is a word count widget where the feature flag controls the color of the text in the end of the editable textbox. The second module, `MyParagraph.js` ,is a component with a background colored text that is controlled by a feature flag. 
 
 ## Final Result
-In the below animation you can see the various variations that are possibole. They are randomized independantly. 
+In the below animation you can see the various variations that are possible. They are randomized independantly. 
 
 ![wc](https://github.com/kleinjoshuaa/Multiple-Web-Components/assets/1207274/b741eead-cd5f-4c7c-8ab7-9e9572ab5036)
 
