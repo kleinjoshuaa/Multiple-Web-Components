@@ -10,7 +10,7 @@ In this example we will show how to use Split as a shared utility that is in sco
 ## Shared Split JS module
 <img width="534" alt="image" src="https://github.com/kleinjoshuaa/Multiple-Web-Components/assets/1207274/2c9d0dc0-2418-414c-87d5-3521ef3e9da2">
 
-This shared Split module will be injected into each of the microfrontend JS files. This allows for independant development and tooling without needing to have multiple Split Factory instances running the in the same browser. We have a little CSS based spinner in the HTML that is toggled by the `showPage()` function that is run when the SDK is ready. This allows there to be no flicker where the experiment is being loaded. The user will see a spinner, and then the treatment they are expected to see. This client is then exported to be used by other js modules as needed. 
+This shared Split module will be injected into each of the microfrontend JS files. This allows for independant development and tooling without needing to have multiple Split Factory instances running the in the same browser. We have a little CSS based spinner in the HTML that is toggled by the `showPage()` function that is run when the SDK is ready. This allows there to be no flicker where the experiment is being loaded. The user will see a spinner, and then the treatment they are expected to see. This client is then exported to be used by other js modules as needed. The `key` here is set to a random string just for demo-able purposes. In a real implementation you would want to put the userid or anonymous id as the value for this variable.  
 
 
 ## Module in Use
