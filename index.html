@@ -6,46 +6,16 @@
     <script src="https://cdn.split.io/sdk/split-10.22.5.min.js"></script>
     <script type="module" src="split.js"></script>
     <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="WordCount.js"></script>
+    <script type="module" src="MyParagraph.js"></script>
   </head>
   <body>
     <div class="loader-container">
       <div class="spinner"></div>
     </div>
     <div id="body" class="hide">
-      <h1>Web Component 1</h1>
-
-      <article contenteditable="">
-        <h2>Sample heading</h2>
-
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        </p>
-
-        <p>
-          Pellentesque ornare tellus sit amet massa tincidunt congue. 
-        </p>
-
-        <p is="word-count"></p>
-      </article>
-      <script type="module" src="WordCount.js"></script>
-
-      <h1>Web Component 2</h1>
-      <template id="my-paragraph">
-        <p><slot name="my-text">My default text</slot></p>
-      </template>
-
-      <my-paragraph id="pg1">
-        <span slot="my-text">Let's have some different text!</span>
-      </my-paragraph>
-
-      <my-paragraph id="pg2">
-        <ul slot="my-text">
-          <li>Let's have some different text!</li>
-          <li>In a list!</li>
-        </ul>
-      </my-paragraph>
-
-      <script type="module" src="MyParagraph.js"></script>
+      <div id="component1"></div>
+      <div id="component2"></div>
     </div>
   </body>
 </html>

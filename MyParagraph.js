@@ -17,15 +17,42 @@ p {
   margin-left: 40px
 }`;
 
+
+
+document.getElementById('component2').innerHTML = `
+<h1>Web Component 2</h1>
+<template id="my-paragraph">
+  <p><slot name="my-text">My default text</slot></p>
+</template>
+
+<my-paragraph id="pg1">
+  <span slot="my-text">Let's have some different text!</span>
+</my-paragraph>
+
+<my-paragraph id="pg2">
+  <ul slot="my-text">
+    <li>Let's have some different text!</li>
+    <li>In a list!</li>
+  </ul>
+</my-paragraph>
+
+
+`;
+
+
+
 client.ready().then(() => {
-  const style = document.createElement("style");
+
+
+
+
+   const style = document.createElement("style");
   const new_component2_style = client.getTreatment("component2_style");
 
   if (new_component2_style == "on") {
     style.textContent = newStyle;
   } else if (new_component2_style == "off") {
     style.textContent = currentStyle;
-    console.log("currentstyle");
   } else {
     style.textContent = currentStyle;
     // also do some alerting here as this was unexpected

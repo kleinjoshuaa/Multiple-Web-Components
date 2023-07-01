@@ -3,7 +3,23 @@ import client from "./split.js";
 const newStyle = `color:blue;font-weight: bold;`;
 
 const currentStyle = `color:red`;
+document.getElementById('component1').innerHTML = `
+<h1>Web Component 1</h1>
 
+<article contenteditable="">
+  <h2>Sample heading</h2>
+
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+  </p>
+
+  <p>
+    Pellentesque ornare tellus sit amet massa tincidunt congue. 
+  </p>
+
+  <p is="word-count"></p>
+</article>
+`;
 client.ready().then(() => {
   // Create a class for the element
   class WordCount extends HTMLParagraphElement {
@@ -13,7 +29,6 @@ client.ready().then(() => {
 
       // count words in element's parent element
       const wcParent = this.parentNode;
-
       function countWords(node) {
         const text = node.innerText || node.textContent;
         return text
@@ -21,7 +36,6 @@ client.ready().then(() => {
           .split(/\s+/g)
           .filter((a) => a.trim().length > 0).length;
       }
-
       const count = `Words: ${countWords(wcParent)}`;
 
       // Create a shadow root
@@ -47,13 +61,16 @@ client.ready().then(() => {
 
       // Update count when element content changes
       setInterval(function () {
-        const count = `Words: ${countWords(wcParent)}`;
+        const count = `Words: ${countWords(article)}`;
         text.textContent = count;
       }, 200);
+   
     }
   }
 
   // Define the new element
 
   customElements.define("word-count", WordCount, { extends: "p" });
+
+
 });

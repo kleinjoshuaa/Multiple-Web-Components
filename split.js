@@ -19,6 +19,7 @@ var factory = splitio({
 
   client.on(client.Event.SDK_TIMED_OUT, function() {
     // show error or timeout page here
+    alert('SDK Timed Out! - check API key')
   });
 
   export default client
