@@ -19,7 +19,7 @@ p {
 
 
 
-document.getElementById('component2').innerHTML = `
+document.getElementById('MyParagraph').innerHTML = `
 <h1>Web Component 2</h1>
 <template id="my-paragraph">
   <p><slot name="my-text">My default text</slot></p>

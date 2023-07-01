@@ -3,7 +3,7 @@ import client from "./split.js";
 const newStyle = `color:blue;font-weight: bold;`;
 
 const currentStyle = `color:red`;
-document.getElementById('component1').innerHTML = `
+document.getElementById('WordCount').innerHTML = `
 <h1>Web Component 1</h1>
 
 <article contenteditable="">
