@@ -1,23 +1,7 @@
 // Create a class for the element
 import client from "./split.js";
-
-const newStyle = `          
-p {
-  color: white;
-  background-color: #666;
-  padding: 5px;
-  margin-left: 40px
-}`;
-
-const currentStyle = `      
-p {
-  color: black;
-  background-color: #c0c5ff;
-  padding: 5px;
-  margin-left: 40px
-}`;
-
-
+import updatePage from "./updatepage.js";
+import { onStyle, offStyle, controlStyle } from './flagStyles.js';
 
 document.getElementById('MyParagraph').innerHTML = `
 <h1>Web Component 2</h1>
@@ -35,40 +19,71 @@ document.getElementById('MyParagraph').innerHTML = `
     <li>In a list!</li>
   </ul>
 </my-paragraph>
-
-
 `;
 
+document.addEventListener("DOMContentLoaded", () => {
+    client.ready().then(() => {
+        console.log("[MyParagraph.js] client.ready().then()");
 
+        const treatment = client.getTreatment("word_style");
+        console.log("[MyParagraph.js] word_style treatment:", treatment);
 
-client.ready().then(() => {
+	let styles;
+	if (treatment === "on") {
+	    styles = onStyle;
+	} else if (treatment === "off") {
+	    styles = offStyle;
+	} else {
+	    styles = controlStyle;
+	    alert("Unexpected treatment value. Using default styles.");
+	}
 
-
-
-
-   const style = document.createElement("style");
-  const new_component2_style = client.getTreatment("component2_style");
-
-  if (new_component2_style == "on") {
-    style.textContent = newStyle;
-  } else if (new_component2_style == "off") {
-    style.textContent = currentStyle;
-  } else {
-    style.textContent = currentStyle;
-    // also do some alerting here as this was unexpected
-  }
-
-  class MyParagraph extends HTMLElement {
-    constructor() {
-      super();
-
-      const template = document.getElementById("my-paragraph");
-      const templateContent = template.content;
-      const shadow = this.attachShadow({ mode: "open" });
-      templateContent.appendChild(style);
-      shadow.appendChild(templateContent.cloneNode(true));
-    }
-  }
-
-  customElements.define("my-paragraph", MyParagraph);
+        // Update styles for all <my-paragraph> instances
+        const paragraphs = document.querySelectorAll("my-paragraph");
+        paragraphs.forEach((paragraph) => {
+            paragraph.updateStyle(styles);
+        });
+    });
 });
+
+class MyParagraph extends HTMLElement {
+    constructor() {
+        super();
+
+        const template = document.getElementById("my-paragraph");
+        const templateContent = template.content;
+
+        // Attach shadow DOM
+        const shadow = this.attachShadow({ mode: "open" });
+
+        // Create and append the style element
+        this.styleElement = document.createElement("style");
+        shadow.appendChild(this.styleElement);
+
+        // Add template content
+        shadow.appendChild(templateContent.cloneNode(true));
+    }
+
+    updateAllParagraphStyles(newStyles) {
+        // Select all <my-paragraph> instances
+        const paragraphs = document.querySelectorAll("my-paragraph");
+
+        // Loop through each instance and call updateStyle
+        paragraphs.forEach((paragraph) => {
+            paragraph.updateStyle(newStyles);
+        });
+
+        console.log(`[MyParagraph] Updated styles for ${paragraphs.length} elements.`);
+    }
+
+    // Public method to update styles dynamically
+    updateStyle(newStyles) {
+        // Update the style element in the shadow DOM
+        this.styleElement.textContent = newStyles;
+        //console.log(`[MyParagraph] Updated styles to:\n${newStyles}`);
+    }
+
+}
+
+customElements.define("my-paragraph", MyParagraph);
+
