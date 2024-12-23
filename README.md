@@ -1,6 +1,10 @@
 # Using Split with multiple web components
 Using Split SDK in a microfrontend environment
 
+## Install a client-side API key
+Copy-and-paste your client-side API key into a file called splitClientApiKey
+Put the file in the root directory with the HTML and JS files.
+
 ## What are microfrontends?
 Micro Frontends are a relatively new architectural style that involves extending the concept of microservices to the frontend of an application. Essentially, in a micro frontend architecture, each UI module is developed, deployed, and maintained independently. This allows independent teams to move faster and have more control over their individual components. Similarly to microservices this requires well defined interfaces and APIs to ensure that intercommunication between micro frontends scales and is maintainable. 
 
@@ -10,7 +14,7 @@ In this example we will show how to use Split as a shared utility that is in sco
 ## Shared Split JS module
 <img width="534" alt="image" src="https://github.com/kleinjoshuaa/Multiple-Web-Components/assets/1207274/2c9d0dc0-2418-414c-87d5-3521ef3e9da2">
 
-This shared Split module will be injected into each of the microfrontend JS files. This allows for independent development and tooling without needing to have multiple Split Factory instances running the in the same browser. We have a little CSS based spinner in the HTML that is toggled by the `showPage()` function that is run when the SDK is ready. This allows there to be no flicker where the experiment is being loaded. The user will see a spinner, and then the treatment they are expected to see. This client is then exported to be used by other js modules as needed. The `key` here is set to a random string just for demo-able purposes. In a real implementation you would want to put the userid or anonymous id as the value for this variable.  Also remember to set the `authorizationKey` to your SDK Key.
+This shared Split module will be injected into each of the microfrontend JS files. This allows for independent development and tooling without needing to have multiple Split Factory instances running the in the same browser. We have a little CSS based spinner in the HTML that is toggled by the `showPage()` function that is run when the SDK is ready. This allows there to be no flicker where the experiment is being loaded. The user will see a spinner, and then the treatment they are expected to see. This client is then exported to be used by other js modules as needed. The `key` here is set to a random string just for demo-able purposes. In a real implementation you would want to put the userid or anonymous id as the value for this variable.
 
 
 ## Module in Use

@@ -25,16 +25,18 @@ client.ready().then(() => {
 
   customElements.define('text-count', class extends HTMLElement {
     constructor() {
-      const new_word_count_style = client.getTreatment("word_count_text");
+      const treatment = client.getTreatment("word_count_text");
+      console.log('word_count_text treatment', treatment);
+
       let style;
-      if (new_word_count_style == "on") {
-              style = newStyle;
-            } else if (new_word_count_style == "off") {
-              style = currentStyle;
-            } else {
-              style= currentStyle;
-              // also do some alerting here as this was unexpected
-            }
+      if (treatment == "on") {
+          style = newStyle;
+      } else if (treatment == "off") {
+          style = currentStyle;
+      } else {
+          style= currentStyle;
+          // also do some alerting here as this was unexpected
+      }
       super().attachShadow({mode:'open'})
              .innerHTML=`<style>span{${style}}</style>`+
                         `<span><!--counter--></span>`;
